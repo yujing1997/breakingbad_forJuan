@@ -4,9 +4,9 @@ Hybrid Multimodal Survival Prediction Framework
 Combines:
 - Advanced multimodal fusion strategies (VAE, Attention, Region-based)
 - Organizer's proven deep learning + traditional ML hybrid approach
-- Your comprehensive feature extraction pipeline
+- Our comprehensive feature extraction pipeline
 
-Author: Yujing's Enhanced Framework
+Author: Yujing
 """
 
 import os
