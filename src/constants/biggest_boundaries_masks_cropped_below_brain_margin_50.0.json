@@ -1,0 +1,16 @@
+{
+    "min_x_mm": 11.718744277954102,
+    "min_x_patient": "MDA-090",
+    "max_x_mm": 277.34361457824707,
+    "max_x_patient": "MDA-222",
+    "min_y_mm": 20.507802486419678,
+    "min_y_patient": "USZ-005",
+    "max_y_mm": 234.37488555908203,
+    "max_y_patient": "MDA-287",
+    "min_z_mm": 0.0,
+    "min_z_patient": "MDA-210",
+    "max_z_mm": 1151.0399932861328,
+    "max_z_patient": "MDA-120",
+    "max_z_from_top_brain_mm": 301.75,
+    "max_z_from_top_brain_patient": "MDA-264"
+}

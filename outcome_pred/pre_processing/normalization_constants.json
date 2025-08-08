@@ -1,0 +1,31 @@
+{
+    "foreground_intensity_properties_per_channel": {
+        "0": {
+            "max": 3070.0,
+            "mean": 37.85746765136719,
+            "median": 42.0,
+            "min": -1287.0,
+            "percentile_00_5": -109.0,
+            "percentile_99_5": 161.0,
+            "std": 43.912620544433594
+        },
+        "1": {
+            "max": 44.037601470947266,
+            "mean": 6.358804225921631,
+            "median": 5.342608451843262,
+            "min": -0.3697148263454437,
+            "percentile_00_5": 0.8138152360916138,
+            "percentile_99_5": 22.65673828125,
+            "std": 4.19609260559082
+        }
+    },
+    "metadata": {
+        "description": "nnUNet intensity normalization constants for HECKTOR dataset",
+        "channels": {
+            "0": "CT",
+            "1": "PET"
+        },
+        "computed_from": "foreground_pixels_only",
+        "dataset": "HECKTOR_2025_Task_2"
+    }
+}

@@ -1,0 +1,30 @@
+# Additional requirements for RFS prediction pipeline
+# Install with: pip install -r requirements_rfs.txt
+
+# Survival analysis libraries
+lifelines>=0.27.0              # Cox regression and survival analysis
+scikit-survival>=0.19.0        # Survival analysis with scikit-learn interface
+pycox>=0.2.3                   # Deep learning for survival analysis (PyTorch-based)
+
+# Radiomics (optional but recommended)
+pyradiomics>=3.0.1             # Radiomics feature extraction
+
+# Deep learning and ML
+torch>=1.9.0                   # PyTorch for deep learning models
+torchvision>=0.10.0            # Computer vision utilities
+scikit-learn>=1.0.0            # Machine learning utilities
+xgboost>=1.6.0                 # Gradient boosting for survival models
+
+# Attention mechanisms and transformers
+attention>=4.1                 # Attention mechanisms
+transformers>=4.21.0           # Transformer models (optional)
+
+# Visualization
+matplotlib>=3.5.0              # Plotting
+seaborn>=0.11.0                # Statistical plotting
+plotly>=5.0.0                  # Interactive plots
+
+# Utility libraries
+pandas>=1.3.0                  # Data manipulation
+joblib>=1.1.0                  # Parallel processing
+tqdm>=4.62.0                   # Progress bars

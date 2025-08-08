@@ -1,0 +1,16 @@
+{
+    "HU_foreground_values": {
+        "mean": "37.716",
+        "std": "47.02",
+        "median": "42.0",
+        "min": "-1287.0",
+        "max": "3070.0"
+    },
+    "pet_foreground_values": {
+        "mean": "6.897",
+        "std": "4.468",
+        "median": "5.91",
+        "min": "-0.37",
+        "max": "44.038"
+    }
+}
