@@ -52,7 +52,7 @@ except ImportError:
     RANDOM_SEED = 42
     IMAGE_SIZE = (96, 96, 96)
 
-# Import your existing components
+# Import our existing components
 from src.inference import Segmentator
 from Hecktor2025.outcome_pred.pre_processing.connected_components import crop_around_mask
 
@@ -144,13 +144,13 @@ class OrganizerFeatureExtractor(nn.Module):
         return final_features
 
 # =============================================================================
-# Enhanced Multimodal Architecture (Your Advanced Approach)
+# Enhanced Multimodal Architecture (our Advanced Approach)
 # =============================================================================
 
 class VAEFusion(nn.Module):
     """
     Variational Autoencoder for intermediate fusion of CT and PET features.
-    Your approach enhanced with their training stability techniques.
+    our approach enhanced with their training stability techniques.
     """
     def __init__(self, input_dim_ct: int, input_dim_pet: int, latent_dim: int = 128):
         super().__init__()
@@ -227,7 +227,7 @@ class VAEFusion(nn.Module):
 class AttentionWeightedFusion(nn.Module):
     """
     Attention-weighted fusion determining modality importance.
-    Your approach with organizer's proven architecture patterns.
+    our approach with organizer's proven architecture patterns.
     """
     def __init__(self, ct_feature_dim: int, pet_feature_dim: int, attention_dim: int = 64):
         super().__init__()
@@ -284,7 +284,7 @@ class AttentionWeightedFusion(nn.Module):
 
 class EnhancedMultimodalFeatureExtractor(nn.Module):
     """
-    Your enhanced feature extractor combining region-based processing
+    our enhanced feature extractor combining region-based processing
     with organizer's proven CNN architecture.
     """
     def __init__(self, clinical_feature_dim: int, feature_output_dim: int = 128):
@@ -293,7 +293,7 @@ class EnhancedMultimodalFeatureExtractor(nn.Module):
         self.clinical_feature_dim = clinical_feature_dim
         self.feature_output_dim = feature_output_dim
         
-        # Separate modality encoders (your approach) - Using DenseNet121
+        # Separate modality encoders (our approach) - Using DenseNet121
         from monai.networks.nets import densenet121
         
         self.ct_backbone = densenet121(
@@ -326,7 +326,7 @@ class EnhancedMultimodalFeatureExtractor(nn.Module):
             nn.ReLU()
         )
         
-        # Your fusion strategies
+        # our fusion strategies
         self.vae_fusion = VAEFusion(512, 512, latent_dim=64)
         self.attention_fusion = AttentionWeightedFusion(512, 512, attention_dim=64)
         
@@ -355,7 +355,7 @@ class EnhancedMultimodalFeatureExtractor(nn.Module):
         # Process clinical features
         clinical_processed = self.clinical_processor(clinical_features)  # [batch, 32]
         
-        # Your advanced fusion strategies
+        # our advanced fusion strategies
         vae_latent, mu, logvar, reconstruction = self.vae_fusion(ct_features, pet_features)  # [batch, 64]
         attention_fused, attention_weights = self.attention_fusion(ct_features, pet_features)  # [batch, 64]
         
@@ -375,7 +375,7 @@ class EnhancedMultimodalFeatureExtractor(nn.Module):
 class HybridSurvivalModel(nn.Module):
     """
     Unified model that can use either organizer's direct fusion approach
-    or your advanced VAE+Attention approach.
+    or our advanced VAE+Attention approach.
     """
     def __init__(self, 
                  clinical_feature_dim: int = 13,
@@ -399,7 +399,7 @@ class HybridSurvivalModel(nn.Module):
                 feature_output_dim=feature_dim
             ).to(self.device)
         else:
-            # Use your enhanced multimodal approach
+            # Use our enhanced multimodal approach
             self.feature_extractor = EnhancedMultimodalFeatureExtractor(
                 clinical_feature_dim=clinical_feature_dim,
                 feature_dim=feature_dim,
@@ -635,11 +635,11 @@ class HybridSurvivalModel(nn.Module):
 
 def run_comparative_experiment(train_loader, val_loader, clinical_feature_dim=13, device=None):
     """
-    Run both organizer's and your approaches for comparison.
+    Run both organizer's and our approaches for comparison.
     
     This demonstrates the dual implementation with DenseNet121:
     1. Organizer's direct CT+PET fusion approach
-    2. Your enhanced VAE+Attention fusion approach
+    2. our enhanced VAE+Attention fusion approach
     """
     if device is None:
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -676,8 +676,8 @@ def run_comparative_experiment(train_loader, val_loader, clinical_feature_dim=13
         'approach': 'Direct CT+PET fusion with DenseNet121'
     }
     
-    # 2. Test Your Enhanced Multimodal Approach
-    print("\n2. Testing Your Enhanced Multimodal Approach:")
+    # 2. Test our Enhanced Multimodal Approach
+    print("\n2. Testing our Enhanced Multimodal Approach:")
     print("   - Separate DenseNet121 for CT and PET")
     print("   - VAE + Attention fusion strategies")
     print("   - Advanced multimodal processing")
@@ -685,14 +685,14 @@ def run_comparative_experiment(train_loader, val_loader, clinical_feature_dim=13
     enhanced_model = HybridSurvivalModel(
         clinical_feature_dim=clinical_feature_dim,
         feature_dim=128,
-        use_organizer_approach=False,  # Use your approach
+        use_organizer_approach=False,  # Use our approach
         vae_latent_dim=64,
         use_vae_fusion=True,
         use_attention_fusion=True,
         device=device
     )
     
-    # Train your approach
+    # Train our approach
     enh_features, enh_val_loss = enhanced_model.train_neural_features(
         train_loader, val_loader, epochs=20
     )
@@ -729,7 +729,7 @@ def run_comparative_experiment(train_loader, val_loader, clinical_feature_dim=13
     print("• Both approaches now use DenseNet121 for improved feature extraction")
     print("• Organizer's approach: Simple but proven effective")
     print("• Enhanced approach: More sophisticated fusion strategies")
-    print("• Choose based on your specific dataset and computational resources")
+    print("• Choose based on our specific dataset and computational resources")
     
     return results
 
@@ -787,7 +787,7 @@ if __name__ == "__main__":
     print("=" * 50)
     print("This framework implements both:")
     print("1. Organizer's direct CT+PET fusion with DenseNet121")
-    print("2. Your enhanced VAE+Attention fusion with DenseNet121")
+    print("2. our enhanced VAE+Attention fusion with DenseNet121")
     print("\nBoth approaches use the same improved backbone!")
     print("\nExample usage:")
     print(create_example_usage())
@@ -861,7 +861,7 @@ if __name__ == "__main__":
             survival_loss = self.survival_loss(risk_scores, times, events)
             contrastive_loss = self.contrastive_loss(features, times, events)
             
-            # VAE loss (your enhancement)
+            # VAE loss (our enhancement)
             original_combined = torch.cat([
                 ct_images.view(ct_images.size(0), -1),
                 pet_images.view(pet_images.size(0), -1)
@@ -876,7 +876,7 @@ if __name__ == "__main__":
                 extras['vae_mu'], extras['vae_logvar']
             )
             
-            # Combined loss (organizer's approach + your enhancements)
+            # Combined loss (organizer's approach + our enhancements)
             total_loss_batch = (survival_loss + 
                               0.1 * contrastive_loss + 
                               self.vae_loss_weight * vae_loss)
@@ -989,7 +989,7 @@ if __name__ == "__main__":
 
 class EnhancedHecktorDataset(Dataset):
     """
-    Enhanced dataset supporting your region-based processing approach.
+    Enhanced dataset supporting our region-based processing approach.
     """
     def __init__(self, cached_data, patient_ids, use_regions=False):
         self.patient_ids = [pid for pid in patient_ids if pid in cached_data['images']]
@@ -1032,24 +1032,24 @@ class EnhancedHecktorDataset(Dataset):
         return ct_image, pet_image, clinical_tensor, survival_time, event_indicator
 
 # =============================================================================
-# Region-Based Processing Pipeline (Your Enhanced Approach)
+# Region-Based Processing Pipeline (our Enhanced Approach)
 # =============================================================================
 
 def process_regions_with_segmentation(ct_path: str, pet_path: str, 
                                     clinical_data: Dict, 
                                     margin_mm: float = 10.0):
     """
-    Your region-based processing enhanced with organizer's data handling.
+    our region-based processing enhanced with organizer's data handling.
     """
     # Load images
     ct_image = sitk.ReadImage(ct_path)
     pet_image = sitk.ReadImage(pet_path)
     
-    # Segment using your approach
+    # Segment using our approach
     segmentator = Segmentator()
     segmentation, _ = segmentator.predict(image_ct=ct_image, image_pet=pet_image, preprocess=True)
     
-    # Find connected components (your approach)
+    # Find connected components (our approach)
     seg_array = sitk.GetArrayFromImage(segmentation)
     labeled_array, num_components = label(seg_array > 0)
     
@@ -1062,7 +1062,7 @@ def process_regions_with_segmentation(ct_path: str, pet_path: str,
         cc_mask.CopyInformation(segmentation)
         
         try:
-            # Crop around mask (your approach)
+            # Crop around mask (our approach)
             cropped_ct, bbox = crop_around_mask(ct_image, cc_mask, margin_mm)
             cropped_pet, _ = crop_around_mask(pet_image, cc_mask, margin_mm)
             cropped_mask, _ = crop_around_mask(cc_mask, cc_mask, margin_mm)
@@ -1250,11 +1250,11 @@ def enhanced_rfs_prediction_pipeline(ct_path: str, pet_path: str,
                                    save_outputs: bool = False,
                                    output_dir: Optional[str] = None):
     """
-    Complete enhanced pipeline combining your approach with organizer's insights.
+    Complete enhanced pipeline combining our approach with organizer's insights.
     """
     print("=== Enhanced RFS Prediction Pipeline ===")
     
-    # Step 1: Process regions (your approach)
+    # Step 1: Process regions (our approach)
     print("Processing regions with enhanced segmentation...")
     region_data = process_regions_with_segmentation(ct_path, pet_path, clinical_data)
     
@@ -1309,7 +1309,7 @@ def enhanced_rfs_prediction_pipeline(ct_path: str, pet_path: str,
             features = model.feature_extractor(ct_image, pet_image, clinical_tensor)
             region_features.append(features.cpu().numpy())
     
-    # Step 4: Aggregate features across regions (your approach)
+    # Step 4: Aggregate features across regions (our approach)
     if len(region_features) > 1:
         # Weight by volume
         volumes = [r['volume_voxels'] for r in region_data]
